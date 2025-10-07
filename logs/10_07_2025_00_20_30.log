@@ -1,0 +1,13 @@
+2025-10-07 00:20:32,243 UTC INFO     test_landing_page  Starting the session
+2025-10-07 00:20:34,074 UTC INFO     pages.playground.landing_page  Navigating to the page: http://uitestingplayground.com/
+2025-10-07 00:20:34,074 UTC INFO     test_landing_page  Verifying the elements displayed
+2025-10-07 00:20:34,075 UTC INFO     pages.playground.base_page  Finding element:  ('link text', 'Dynamic ID')
+2025-10-07 00:20:34,137 UTC DEBUG    test_landing_page  Dynamic ID option: Dynamic ID
+2025-10-07 00:20:34,137 UTC INFO     pages.playground.base_page  Finding element:  ('link text', 'Class Attribute')
+2025-10-07 00:20:34,166 UTC DEBUG    test_landing_page  Class Attribute option: Class Attribute
+2025-10-07 00:20:34,167 UTC INFO     pages.playground.base_page  Finding element:  ('link text', 'Hidden Layers')
+2025-10-07 00:20:34,201 UTC DEBUG    test_landing_page  Hidden Layers option: Hidden Layers
+2025-10-07 00:20:34,201 UTC INFO     pages.playground.base_page  Finding element:  ('link text', 'Dynamic ID')
+2025-10-07 00:20:34,228 UTC INFO     pages.playground.base_page  Finding element:  ('link text', 'Class Attribute')
+2025-10-07 00:20:34,257 UTC INFO     pages.playground.base_page  Finding element:  ('link text', 'Hidden Layers')
+2025-10-07 00:20:34,286 UTC INFO     test_landing_page  Closing the browser
