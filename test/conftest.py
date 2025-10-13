@@ -9,8 +9,8 @@ logger = get_logger(__name__)
 def first_entry(request):
     env = request.config.getoption("--env")
     logger.debug("Environment: %s", env)
-    browser = request.config.getoption("--browser")
-    logger.debug("Browser: %s", browser)
+    browsers = request.config.getoption("--browser")
+    logger.debug("Browser: %s", browsers)
     return "a"
 
 # Arrange
@@ -22,10 +22,10 @@ def pytest_addoption(parser):
     parser.addoption(
         '--env', action='store', default='development', help="Environment where the tests are executed"
     )
-    parser.addoption(
-        '--browser', action='store', default='chrome', help="Browser to run the web automation tests"
-    )
+    #parser.addoption(
+    #    '--browser', action='store', default='chrome', help="Browser to run the web automation tests"
+    #)
 
 def pytest_configure(config):
     pytest.env = config.getoption("env")
-    pytest.browser = config.getoption("browser")
+    #pytest.browser = config.getoption("browser")
