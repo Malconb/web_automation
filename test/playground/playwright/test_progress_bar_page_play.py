@@ -5,12 +5,18 @@ from pages.playground.playwright.progress_bar_page import ProgressBarPagePlay
 from dotenv import load_dotenv
 import os
 import time
+import allure
 load_dotenv()
 
 username = os.getenv("username")
 password = os.getenv("password")
 password2 = os.getenv("password2")
 
+@allure.title("Test Smoke for Progress Bar page")
+@allure.description("This test verifies Progress Bar page for Test Automation Playground.")
+@allure.tag("Progress Bar", "Smoke", "Functional")
+@pytest.mark.functional
+@pytest.mark.smoke
 @pytest.mark.progress_bar_page
 class TestProgressBarPagePlay:
     def test_progress_bar_page(self, page: Page) -> None:

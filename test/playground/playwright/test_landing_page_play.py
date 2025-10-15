@@ -1,9 +1,14 @@
 import pytest
-import re 
+import re  
+import allure
 from playwright.sync_api import Page, expect
 from pages.playground.playwright.landing_page_play import LandingPagePlay
 
-@pytest.mark.landing_page
+@allure.title("Test Smoke for Landing page")
+@allure.description("This test verifies landing page for Test Automation Playground.")
+@allure.tag("Landing", "Smoke", "Functional")
+@pytest.mark.functional
+@pytest.mark.smoke 
 class TestLandingPagePlay:
     """
     test class for landing page play

@@ -4,12 +4,19 @@ from playwright.sync_api import Page, expect
 from pages.playground.playwright.sample_app_page_play import SampleAppPagePlay
 from dotenv import load_dotenv
 import os
+import allure
 load_dotenv()
 
 username = os.getenv("username")
 password = os.getenv("password")
 password2 = os.getenv("password2")
 
+
+@allure.title("Test Smoke for Sample App page")
+@allure.description("This test verifies Sample App page for Test Automation Playground.")
+@allure.tag("Sample App", "Smoke", "Functional")
+@pytest.mark.functional
+@pytest.mark.smoke
 @pytest.mark.sample_app_page
 class TestSampleAppPlay:
 
