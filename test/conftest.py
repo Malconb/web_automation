@@ -1,6 +1,7 @@
 import logging
 import pytest
 from utils.logger import get_logger
+from utils.read_json_data import read_json_file
 
 logger = get_logger(__name__)
 
@@ -17,6 +18,10 @@ def first_entry(request):
 @pytest.fixture
 def order(first_entry):
     return first_entry + "b"
+
+@pytest.fixture(params=["link"])
+def read_data(request):
+    return read_json_file(f"test/data/{request.param}.json")
 
 def pytest_addoption(parser):
     parser.addoption(

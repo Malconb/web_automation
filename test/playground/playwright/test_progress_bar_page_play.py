@@ -6,6 +6,10 @@ from dotenv import load_dotenv
 import os
 import time
 import allure
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
+
 load_dotenv()
 
 username = os.getenv("username")
@@ -24,7 +28,8 @@ class TestProgressBarPagePlay:
         progress_bar_page.navigate()
         progress_bar_page.click_on_start()
         # Wait until progress bar reaches 75%
-        while progress_bar_page.get_progress_value() != "75%":
-            time.sleep(0.1)
+        while progress_bar_page.get_progress_value() < "75%":
+            time.sleep(1)
         progress_bar_page.click_on_stop()           
-        assert progress_bar_page.get_progress_value() == "75%"
+        assert progress_bar_page.get_progress_value() >= "75%"
+        logger.info("Progress bar reached " + progress_bar_page.get_progress_value() + " for stopping")

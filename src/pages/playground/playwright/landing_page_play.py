@@ -2,7 +2,9 @@ from playwright.sync_api import Page, Locator
 from pages.playground.playwright.base_page_play import BasePagePlay
 from pages.playground.playwright.sample_app_page_play import SampleAppPagePlay
 from pages.playground.playwright.progress_bar_page import ProgressBarPagePlay
+from utils.logger import get_logger
 
+logger = get_logger(__name__)
 
 class LandingPagePlay(BasePagePlay):
     def __init__(self, page: Page):
