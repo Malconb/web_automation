@@ -7,22 +7,20 @@ pipeline {
     stages {
         stage('python version') {
             steps {
-              sh 'python3 --version'
+              sh 'python3.12 --version'
+              sh 'python3.12 -m venv venv'
+              sh '. venv/bin/activate'
             }
         }
         stage('Run Requirements & Pylint') {
             steps {
-                withPythonEnv('python3') {
-                    sh 'pip install -r requirements.txt'
-                    sh 'playwright install'
-                }
+                sh 'pip install -r requirements.txt'
+                sh 'playwright install'
             }
         }
         stage('Run Python Scripts') {
             steps {
-                withPythonEnv('python3') {
-                    sh "python3.12 -m pytest test/playground/playwright/${params.Tag} -vs --alluredir reports/"
-                }
+                sh "python3.12 -m pytest test/playground/playwright/${params.Tag} -vs --alluredir reports/"
             }
         }
         stage('reports') {
