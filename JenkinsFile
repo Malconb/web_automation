@@ -9,21 +9,21 @@ pipeline {
             steps {
                 sh 'python3.12 -V'
                 sh 'python3.12 -m venv venv'
-                sh '''#!/bin/bash
+                sh """#!/bin/bash
                 source venv/bin/activate
                 pip install -r requirements.txt
                 playwright install
-                '''
+                """
             }
         }
         stage('Run Python Scripts') {
             steps {
-                sh '''#!/bin/bash
+                sh """ #!/bin/bash
                 source venv/bin/activate
                 export PYTHONPATH="$WORKSPACE:$WORKSPACE/src"
                 echo $PYTHONPATH
                 python3.12 -m pytest "test/playground/playwright/${params.Test}" -vs --alluredir reports/
-                '''
+                """
             }
         }
         stage('reports') {
