@@ -24,7 +24,7 @@ password2 = os.getenv("password2")
 class TestSampleAppPlay:
 
     @pytest.mark.login_success
-    def test_sample_app_login_success(self, page: Page) -> None:
+    def test_sample_app_login_success(self, page: Page, log_test_name) -> None:
         sample_app_page = SampleAppPagePlay(page)
         sample_app_page.navigate()
         sample_app_page.enter_text(username)
@@ -38,7 +38,7 @@ class TestSampleAppPlay:
 
 
     @pytest.mark.login_failure
-    def test_sample_app_login_failure(self, page: Page) -> None:
+    def test_sample_app_login_failure(self, page: Page, log_test_name) -> None:
         sample_app_page = SampleAppPagePlay(page)
         sample_app_page.navigate()
         sample_app_page.enter_text(username)

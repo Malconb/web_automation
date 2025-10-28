@@ -23,13 +23,13 @@ password2 = os.getenv("password2")
 @pytest.mark.smoke
 @pytest.mark.progress_bar_page
 class TestProgressBarPagePlay:
-    def test_progress_bar_page(self, page: Page) -> None:
+    def test_progress_bar_page(self, page: Page, log_test_name) -> None:
         progress_bar_page = ProgressBarPagePlay(page)
         progress_bar_page.navigate()
         progress_bar_page.click_on_start()
         # Wait until progress bar reaches 75%
         while progress_bar_page.get_progress_value() < "75%":
-            time.sleep(1)
+            None
         progress_bar_page.click_on_stop()           
         assert progress_bar_page.get_progress_value() >= "75%"
         logger.info("Progress bar reached " + progress_bar_page.get_progress_value() + " for stopping")

@@ -23,7 +23,7 @@ password2 = os.getenv("password2")
 class TestAlertsPlay:
 
     @pytest.mark.alert_success
-    def test_alerts_success(self, page: Page) -> None:
+    def test_alerts_success(self, page: Page, log_test_name) -> None:
         alerts_page = AlertsPagePlay(page)
         alerts_page.navigate()
         alerts_page.click_on_alert_button()
@@ -34,7 +34,7 @@ class TestAlertsPlay:
         logger.info("Prompt button was clicked")
         
     @pytest.mark.parametrize("read_data", ["link"], indirect=True)
-    def test_alerts_successparametrized(self, page: Page, read_data) -> None:
+    def test_alerts_successparametrized(self, page: Page, read_data, log_test_name) -> None:
         alerts_page = AlertsPagePlay(page)
         alerts_page.navigate()
         for data in read_data:

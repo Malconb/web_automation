@@ -17,7 +17,7 @@ class TestLandingPagePlay:
     test class for landing page play
     """
 
-    def test_landing_page(self, page: Page) -> None:
+    def test_landing_page(self, page: Page, log_test_name) -> None:
         landing_page = LandingPagePlay(page)
         landing_page.navigate()
         expect(page).to_have_title("UI Test Automation Playground")

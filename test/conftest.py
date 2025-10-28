@@ -34,3 +34,10 @@ def pytest_addoption(parser):
 def pytest_configure(config):
     pytest.env = config.getoption("env")
     #pytest.browser = config.getoption("browser")
+
+@pytest.fixture()
+def log_test_name(request):
+    logger.info("Test name: '%s' started", request.node.name)
+    def fin():
+        logger.info("Test name: '%s' finished", request.node.name)
+    request.addfinalizer(fin)
