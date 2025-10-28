@@ -1,18 +1,18 @@
 pipeline {
     agent any
     parameters {
-        string description: 'Markers to be executed by pytest, please set like this e.g. "-m sanity", "-m" is mandatory for markers', name: 'Tag'
+        string description: 'Markers to be executed by pytest, please set like this e.g. "-m sanity", "-m" is mandatory for markers', name: 'Test'
         }
 
     stages {
         stage('python version') {
             steps {
-              sh 'python3.12 --version'
+              sh 'python3.12.3 --version'
             }
         }
-        stage('Run Requirements & Pylint') {
+        stage('Run Requirements') {
             steps {
-                withPythonEnv('python3.12') {
+                withPythonEnv('python3.12.3') {
                     sh 'pip install -r requirements.txt'
                     sh 'playwright install'
                 }
@@ -20,8 +20,8 @@ pipeline {
         }
         stage('Run Python Scripts') {
             steps {
-                withPythonEnv('python3.12') {
-                    sh "python3.12 -m pytest test/playground/playwright/${params.Tag} -vs --alluredir reports/"
+                withPythonEnv('python3.12.3') {
+                    sh "python3.12.3 -m pytest test/playground/playwright/${params.Test} -vs --alluredir reports/"
                 }
             }
         }
