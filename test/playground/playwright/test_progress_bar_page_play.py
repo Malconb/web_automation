@@ -29,7 +29,7 @@ class TestProgressBarPagePlay:
         progress_bar_page.click_on_start()
         # Wait until progress bar reaches 75%
         while progress_bar_page.get_progress_value() < "75%":
-            None
+            time.sleep(0.5)
         progress_bar_page.click_on_stop()           
         assert progress_bar_page.get_progress_value() >= "75%"
         logger.info("Progress bar reached " + progress_bar_page.get_progress_value() + " for stopping")
