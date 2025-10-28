@@ -5,24 +5,18 @@ pipeline {
         }
 
     stages {
-        stage('python version') {
+        stage('Setup Python') {
             steps {
-              sh 'python3.12.3 --version'
-            }
-        }
-        stage('Run Requirements') {
-            steps {
-                withPythonEnv('python3.12.3') {
-                    sh 'pip install -r requirements.txt'
-                    sh 'playwright install'
-                }
+                sh 'python3.12 -V'
+                sh 'python3.12 -m venv venv'
+                sh 'source venv/bin/activate'
+                sh 'pip install -r requirements.txt'
+                sh 'playwright install'
             }
         }
         stage('Run Python Scripts') {
             steps {
-                withPythonEnv('python3.12.3') {
-                    sh "python3.12.3 -m pytest test/playground/playwright/${params.Test} -vs --alluredir reports/"
-                }
+                sh "python3.12 -m pytest test/playground/playwright/${params.Test} -vs --alluredir reports/"
             }
         }
         stage('reports') {
