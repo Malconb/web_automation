@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters {
-        string description: 'Test to be executed with python and playwright', name: 'Tests'
+        string description: 'Test to be executed with python and playwright', name: 'Tags'
         }
 
     stages {
@@ -22,7 +22,7 @@ pipeline {
                 source venv/bin/activate
                 export PYTHONPATH="$WORKSPACE:$WORKSPACE/src"
                 echo $PYTHONPATH
-                python3.12 -m pytest test/playground/playwright/$Tests -vs --alluredir reports/
+                python3.12 -m pytest test/playground/playwright/ $Tags -vs --alluredir reports/
                 '''
             }
         }
