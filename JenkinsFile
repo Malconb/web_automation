@@ -20,7 +20,7 @@ pipeline {
             steps {
                 sh '''#!/bin/bash
                 source venv/bin/activate
-                python3.12 -m pytest test/playground/playwright/${params.Test} -vs --alluredir reports/
+                python3.12 -m pytest test/playground/playwright/ -vs --alluredir reports/
                 '''
             }
         }
