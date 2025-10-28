@@ -10,9 +10,5 @@
     {
         "button": "Prompt",
         "clicked_button": "Prompt dialog message was displayed and accepted"
-    },
-    {
-        "button": "Blocked",
-        "clicked_button": "Blocked dialog message was displayed and accepted"
     }
 ]
