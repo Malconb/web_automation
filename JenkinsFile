@@ -22,7 +22,7 @@ pipeline {
                 source venv/bin/activate
                 export PYTHONPATH="$WORKSPACE:$WORKSPACE/src"
                 echo $PYTHONPATH
-                python3.12 -m pytest test/playground/playwright/test_alerts_page_play.py -vs --headed --alluredir reports/
+                python3.12 -m pytest test/playground/playwright/ -vs --headed --alluredir reports/
                 '''
             }
         }
