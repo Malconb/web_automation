@@ -11,12 +11,13 @@ logger = get_logger(__name__)
 @allure.description("This test verifies landing page for Test Automation Playground.")
 @allure.tag("Landing", "Smoke", "Functional")
 @pytest.mark.functional
-@pytest.mark.smoke 
+@pytest.mark.landing_page
 class TestLandingPagePlay:
     """
     test class for landing page play
     """
 
+    @pytest.mark.landing_page
     def test_landing_page(self, page: Page, log_test_name) -> None:
         landing_page = LandingPagePlay(page)
         landing_page.navigate()

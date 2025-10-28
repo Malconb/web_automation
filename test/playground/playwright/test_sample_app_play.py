@@ -20,10 +20,11 @@ password2 = os.getenv("password2")
 @allure.tag("Sample App", "Smoke", "Functional")
 @pytest.mark.functional
 @pytest.mark.smoke
+@pytest.mark.regression
 @pytest.mark.sample_app_page
 class TestSampleAppPlay:
 
-    @pytest.mark.login_success
+    @pytest.mark.sample_app_page_success
     def test_sample_app_login_success(self, page: Page, log_test_name) -> None:
         sample_app_page = SampleAppPagePlay(page)
         sample_app_page.navigate()
@@ -37,7 +38,7 @@ class TestSampleAppPlay:
         logger.info("User logged out successfully")
 
 
-    @pytest.mark.login_failure
+    @pytest.mark.sample_app_page_failure
     def test_sample_app_login_failure(self, page: Page, log_test_name) -> None:
         sample_app_page = SampleAppPagePlay(page)
         sample_app_page.navigate()

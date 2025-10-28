@@ -18,11 +18,11 @@ password2 = os.getenv("password2")
 @allure.description("This test verifies Sample App page for Test Automation Playground.")
 @allure.tag("Sample App", "Smoke", "Functional")
 @pytest.mark.functional
-@pytest.mark.smoke
-@pytest.mark.sample_app_page
+@pytest.mark.regression
+@pytest.mark.alerts_page
 class TestAlertsPlay:
  
-    @pytest.mark.alert_success
+    @pytest.mark.alerts_page_success
     def test_alerts_success(self, page: Page, log_test_name) -> None:
         alerts_page = AlertsPagePlay(page)
         alerts_page.navigate()
@@ -33,7 +33,7 @@ class TestAlertsPlay:
         alerts_page.click_on_prompt_button()
         logger.info("Prompt button was clicked")
                
-    @pytest.mark.parametrize("read_data", ["link"], indirect=True)
+    @pytest.mark.alerts_page_parametrize("read_data", ["link"], indirect=True)
     def test_alerts_successparametrized(self, page: Page, read_data, log_test_name) -> None:
         alerts_page = AlertsPagePlay(page)
         alerts_page.navigate()
