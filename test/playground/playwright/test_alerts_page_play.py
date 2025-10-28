@@ -1,6 +1,6 @@
 import pytest
 import re 
-from playwright.sync_api import Page
+from playwright.sync_api import Page, sync_playwright
 from pages.playground.playwright.alerts_page_play import AlertsPagePlay
 from dotenv import load_dotenv
 import os
@@ -21,6 +21,12 @@ password2 = os.getenv("password2")
 @pytest.mark.smoke
 @pytest.mark.sample_app_page
 class TestAlertsPlay:
+    def setup(self):
+        self.browser = sync_playwright.chromium.launch(headless=False)
+        self.page = self.browser.new_page()
+
+    def teardown(self):
+        self.browser.close()
 
     @pytest.mark.alert_success
     def test_alerts_success(self, page: Page, log_test_name) -> None:
@@ -32,7 +38,7 @@ class TestAlertsPlay:
         logger.info("Confirm button was clicked")
         alerts_page.click_on_prompt_button()
         logger.info("Prompt button was clicked")
-        
+               
     @pytest.mark.parametrize("read_data", ["link"], indirect=True)
     def test_alerts_successparametrized(self, page: Page, read_data, log_test_name) -> None:
         alerts_page = AlertsPagePlay(page)
