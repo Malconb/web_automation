@@ -14,6 +14,7 @@ class LandingPagePlay(BasePagePlay):
         self.sample_app : Locator = page.get_by_role("link", name="Sample App")
         self.dynamic_id : Locator = page.get_by_role("link", name="Dynamic ID")
         self.progress_bar : Locator = page.get_by_role("link", name="Progress Bar")
+        self.alerts : Locator = page.get_by_role("link", name="AlertsWindows") 
         
     def navigate(self):
         self.navigate_url("http://uitestingplayground.com/")

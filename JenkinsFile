@@ -1,7 +1,11 @@
 pipeline {
     agent any
     parameters {
-        string description: 'Test to be executed with python and playwright', name: 'Tags'
+        string (
+            name: 'Tags',
+            description: 'Test to be executed with python and playwright e.g. -m functional',
+            defaultValue: '-m functional'
+        )
         }
 
     stages {
