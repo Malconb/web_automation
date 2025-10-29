@@ -1,5 +1,7 @@
+"""
+test for Sample App page play
+"""
 import pytest
-import re 
 from playwright.sync_api import Page, expect
 from pages.playground.playwright.sample_app_page_play import SampleAppPagePlay
 from dotenv import load_dotenv
@@ -23,9 +25,15 @@ password2 = os.getenv("password2")
 @pytest.mark.regression
 @pytest.mark.sample_app_page
 class TestSampleAppPlay:
+    """
+    test class for sample app page play
+    """
 
     @pytest.mark.sample_app_page_success
     def test_sample_app_login_success(self, page: Page, log_test_name) -> None:
+        """
+        test for sample app page play success
+        """
         sample_app_page = SampleAppPagePlay(page)
         sample_app_page.navigate()
         sample_app_page.enter_text(username)
@@ -40,6 +48,9 @@ class TestSampleAppPlay:
 
     @pytest.mark.sample_app_page_failure
     def test_sample_app_login_failure(self, page: Page, log_test_name) -> None:
+        """
+        test for sample app page play failure
+        """
         sample_app_page = SampleAppPagePlay(page)
         sample_app_page.navigate()
         sample_app_page.enter_text(username)

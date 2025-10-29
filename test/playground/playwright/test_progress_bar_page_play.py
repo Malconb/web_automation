@@ -1,11 +1,14 @@
-import pytest
-import re 
-from playwright.sync_api import Page, expect
-from pages.playground.playwright.progress_bar_page import ProgressBarPagePlay
-from dotenv import load_dotenv
+"""
+test for Progress Bar page play
+"""
+
 import os
 import time
+import pytest
+from dotenv import load_dotenv
+from playwright.sync_api import Page
 import allure
+from pages.playground.playwright.progress_bar_page import ProgressBarPagePlay
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -23,13 +26,22 @@ password2 = os.getenv("password2")
 @pytest.mark.smoke
 @pytest.mark.progress_bar_page
 class TestProgressBarPagePlay:
+    """
+    test class for progress bar page play
+    """
+
+    @pytest.mark.progress_bar_page
     def test_progress_bar_page(self, page: Page, log_test_name) -> None:
+        """
+        test for progress bar page play
+        """
         progress_bar_page = ProgressBarPagePlay(page)
         progress_bar_page.navigate()
         progress_bar_page.click_on_start()
         # Wait until progress bar reaches 75%
         while progress_bar_page.get_progress_value() < "75%":
             time.sleep(0.5)
-        progress_bar_page.click_on_stop()           
+        progress_bar_page.click_on_stop()
         assert progress_bar_page.get_progress_value() >= "75%"
-        logger.info("Progress bar reached " + progress_bar_page.get_progress_value() + " for stopping")
+        logger.info("Progress bar reached " + progress_bar_page.get_progress_value() + " for stop")
+        
